@@ -1,8 +1,12 @@
 <template>
-  <TreeChart 
-    :data="treeData"
-    :width="500"
-    :height="500" />
+  <div>
+    <h1>Tree Chart</h1>
+    <div v-if="errorMsg" class="error">{{errorMsg}}</div>
+    <TreeChart 
+      :data="treeData"
+      :width="500"
+      :height="500" />
+  </div>
 </template>
 
 <script>
@@ -16,7 +20,8 @@ export default {
   },
   data () {
     return {
-      jsonData: null
+      jsonData: null,
+      errorMsg: null
     };
   },
   computed: {
@@ -41,24 +46,17 @@ export default {
     }
   },
   async created () {
-    this.jsonData = await apiService.get("test");
+    try {
+      this.jsonData = await apiService.get("test");
+    } catch (ex) {
+      this.errorMsg = 'Internal server error. Check if server is running'
+    }
   }
 }
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.error {
+  color: red;
 }
 </style>

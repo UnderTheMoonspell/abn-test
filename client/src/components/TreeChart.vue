@@ -136,6 +136,9 @@ export default {
         .style("text-anchor", "middle")
         .text(function (d) {
           return d.data.name;
+        })
+        .on("click", function (d, node) {
+          _self.selectNode(d3.select(this.previousSibling), node);
         });
     },
     selectNode (el, node) {
