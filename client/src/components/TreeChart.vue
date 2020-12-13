@@ -159,6 +159,7 @@ $abn-green: #006361;
 
 .container {
   text-align: left;
+  display: inline-block;
 }
 
 .selected-node {

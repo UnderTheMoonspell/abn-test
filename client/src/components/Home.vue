@@ -27,20 +27,18 @@ export default {
   computed: {
     treeData () {
       if (this.jsonData) {
-        if (this.jsonData) {
-          const inputArray = this.jsonData.data.slice()
-          const tempMap = {}
-          inputArray.forEach(item => tempMap[item.name] = {...item, children: []});
-          const treeData = [];
-          inputArray.forEach(item => {
-            if (item.parent) {
-              tempMap[item.parent].children.push(tempMap[item.name])
-            } else {
-              treeData.push(tempMap[item.name])
-            }
-          });
-          return treeData;
-        }
+        const inputArray = this.jsonData.data.slice()
+        const tempMap = {}
+        inputArray.forEach(item => tempMap[item.name] = {...item, children: []});
+        const treeData = [];
+        inputArray.forEach(item => {
+          if (item.parent) {
+            tempMap[item.parent].children.push(tempMap[item.name])
+          } else {
+            treeData.push(tempMap[item.name])
+          }
+        });
+        return treeData;
       }
       return []
     }
