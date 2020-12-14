@@ -1,6 +1,14 @@
 # abn-test
 
 ## Project setup
+cd server
+
+```
+npm install
+```
+
+cd client
+
 ```
 npm install
 ```
