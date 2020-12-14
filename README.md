@@ -17,3 +17,8 @@ cd client
 ```
 npm run serve
 ```
+
+### Runs unit tests
+```
+npm run test
+```

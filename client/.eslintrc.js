@@ -1,15 +1,19 @@
 module.exports = {
   root: true,
+
   env: {
     browser: true,
     node: true,
-    es6: true,
+    es6: true
   },
+
   parserOptions: {
     parser: 'babel-eslint',
     sourceType: 'module',
   },
-  extends: ['eslint:recommended', 'plugin:vue/base'],
+
+  extends: ['eslint:recommended', 'plugin:vue/base', 'plugin:jest/recommended'],
+
   rules: {
     curly: [2, 'all'],
     indent: 'off',
@@ -54,4 +58,16 @@ module.exports = {
       },
     ],
   },
+
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
+      ],
+      env: {
+        jest: true,
+      },
+    },
+  ],
 };
